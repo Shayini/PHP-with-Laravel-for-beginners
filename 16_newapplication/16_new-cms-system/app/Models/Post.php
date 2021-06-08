@@ -26,6 +26,9 @@ class Post extends Model
 
     // Accessor
     public function getPostImageAttribute($value){
-        return asset($value);
-    }
+        if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+            }
 }
