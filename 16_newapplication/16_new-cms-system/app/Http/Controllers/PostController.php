@@ -11,7 +11,7 @@ class PostController extends Controller
     //
     public function index(){
 
-        $posts = auth()->user()->posts;         // get only the posts related to the signed in user
+        // $posts = auth()->user()->posts;         // get only the posts related to the signed in user
         // $posts = Post::all();
         $posts = auth()->user()->posts()->paginate(5);         // get only the posts related to the signed in user, include pagination
 

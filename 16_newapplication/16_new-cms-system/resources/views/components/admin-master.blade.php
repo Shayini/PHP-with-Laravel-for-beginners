@@ -57,6 +57,11 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <x-admin-sidebar-posts-links></x-admin-sidebar-posts-links>
+      
+      @if(auth()->user()->userHasRole('Admin'))
+      <x-admin-sidebar-users-links></x-admin-sidebar-users-links>
+      @endif
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -325,7 +330,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  
+
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
