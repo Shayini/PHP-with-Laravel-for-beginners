@@ -11,9 +11,11 @@ class RoleController extends Controller
 {
     //
     public function index(){
+
         return view('admin.roles.index', [
             'roles' => Role::all()
         ]);
+
     }
 
     public function store(){
@@ -28,5 +30,16 @@ class RoleController extends Controller
         ]);
 
         return back();
+
+    }
+
+    public function destroy(Role $role){
+
+        $role->delete();
+
+        session()->flash('role-deleted', 'Deleted Role ' . $role->name);
+
+        return back();
+
     }
 }
