@@ -18,6 +18,14 @@ class RoleController extends Controller
 
     }
 
+    public function edit(Role $role){
+
+        return view('admin.roles.edit', [
+            'role' => $role
+        ]);
+
+    }
+
     public function store(){
 
         request()->validate([
@@ -28,6 +36,25 @@ class RoleController extends Controller
             'name' => Str::ucfirst(request('name')),
             'slug' => Str::of(Str::lower(request('name')))->slug('-')
         ]);
+
+        return back();
+
+    }
+
+    public function update(Role $role){
+
+        $role->name = Str::ucfirst(request('name'));
+        $role->slug = Str::of(Str::lower(request('name')))->slug('-');
+
+        if($role->isDirty('name')){     // Check whether the is there any change in the role name
+            session()->flash('role-updated', 'Role Updated: ' . request('name'));
+            $role->save();
+        } else {
+            session()->flash('role-updated', 'Nothing has been updated');
+        }
+
+
+
 
         return back();
 
