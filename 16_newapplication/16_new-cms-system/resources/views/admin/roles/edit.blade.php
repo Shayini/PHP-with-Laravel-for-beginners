@@ -8,20 +8,20 @@
 
         <div class="row">
             <div class="col-sm-6">
-            <h1>Edit Role: {{$role->name}}</h1>
+                <h1>Edit Role: {{$role->name}}</h1>
 
-            <form class="" action="{{route('roles.update', $role->id)}}" method="post">
-                @csrf
-                @method('PUT')
+                <form class="" action="{{route('roles.update', $role->id)}}" method="post">
+                    @csrf
+                    @method('PUT')
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{$role->name}}">
-                </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" value="{{$role->name}}">
+                    </div>
 
-                <button class="btn btn-primary">Update</button>
-            </form>
-        </div>
+                    <button class="btn btn-primary">Update</button>
+                </form>
+            </div>
         </div>
 
         <div class="row">
