@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Http\Requests\UsersRequest;
+use App\Http\Requests\UsersRequest;
 
 class AdminUsersController extends Controller
 {
