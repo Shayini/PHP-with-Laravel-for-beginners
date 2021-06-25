@@ -4,7 +4,7 @@
     <h1>Create Users</h1>
 
     <!-- <form method="post" action="/admin/users"> -->
-    {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\AdminUsersController@store']) !!}    <!-- Opening A Form -->
+    {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\AdminUsersController@store', 'files' => true]) !!}    <!-- Opening A Form -->
 
         <div class="form-group">
             <!-- <input type="text" name="title" placeholder="Enter title"> -->
@@ -23,8 +23,13 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('status', 'Status:') !!}
-            {!! Form::select('status', array(1 => 'Active', 0 => 'Not Active'), 0, ['class'=>'form-control']) !!}
+            {!! Form::label('is_active', 'Status:') !!}
+            {!! Form::select('is_active', array(1 => 'Active', 0 => 'Not Active'), 0, ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('file', 'File:') !!}
+            {!! Form::file('file', null, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
