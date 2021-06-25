@@ -16,6 +16,6 @@ class Photo extends Model
 
     // Accessor
     public function getFileAttribute($photo){
-        return asset($this->uploads . $photo);
+        return $this->uploads . $photo;
     }
 }
