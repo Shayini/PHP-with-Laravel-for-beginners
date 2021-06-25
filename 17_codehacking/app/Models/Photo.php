@@ -9,7 +9,7 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable - ['file'];
+    protected $fillable = ['file'];
 
 
     public function role(){
