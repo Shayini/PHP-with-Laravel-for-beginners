@@ -59,7 +59,7 @@ class AdminUsersController extends Controller
 
         User::create($input);
 
-        // return redirect('/admin/users');
+        return redirect('/admin/users');
         // return $request->all();
     }
 

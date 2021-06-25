@@ -9,14 +9,13 @@ class Photo extends Model
 {
     use HasFactory;
 
+    protected $uploads = '/image/';
+
     protected $fillable = ['file'];
 
 
-    public function role(){
-        return $this->belongsTo('App\Models\Role');
-    }
-
-    public function photo(){
-        return $this->belongsTo('App\Models\Photo');
+    // Accessor
+    public function getFileAttribute($photo){
+        return asset($this->uploads . $photo);
     }
 }
