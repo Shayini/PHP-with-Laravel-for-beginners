@@ -30,10 +30,17 @@
 
             <div class="form-group">
                 <!-- <input type="submit" name="submit"> -->
-                {!! Form::submit('Update Post', ['class'=>'btn btn-primary']) !!}   <!-- Generating A Submit Button, 'Update User - name shown in the button, 'btn btn-primary' - value for 'class' attribute -->
+                {!! Form::submit('Update Post', ['class'=>'btn btn-primary col-sm-6']) !!}   <!-- Generating A Submit Button, 'Update User - name shown in the button, 'btn btn-primary' - value for 'class' attribute -->
             </div>
 
         <!-- </form> -->
+        {!! Form::close() !!}
+
+
+        {!! Form::open(['method' => 'DELETE', 'action' => ['App\Http\Controllers\AdminPostsController@destroy', $post->id]]) !!}    <!-- Opening A Form -->
+                <div class="form-group">
+                    {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}   <!-- Generating A Submit Button, 'Delete User - name shown in the button, 'btn btn-danger' - value for 'class' attribute -->
+                </div>
         {!! Form::close() !!}
     </div>
 
