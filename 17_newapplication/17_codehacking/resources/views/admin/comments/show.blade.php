@@ -3,7 +3,7 @@
 
 
 @section('content')
-    @if($comments)
+    @if(count($comments) > 0)
         <h1>Comments</h1>
 
         <table class="table">
