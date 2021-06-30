@@ -15,4 +15,8 @@ class AdminMediasController extends Controller
 
         return view('admin.media.index', compact('photos'));
     }
+
+    public function create(){
+        return view('admin.media.create');
+    }
 }
