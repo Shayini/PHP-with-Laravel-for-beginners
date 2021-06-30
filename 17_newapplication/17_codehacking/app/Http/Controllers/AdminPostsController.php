@@ -135,7 +135,15 @@ class AdminPostsController extends Controller
         unlink(public_path() . $post->photo->file);         // Remove profile image from the public/images folder
 
         $post->delete();
-        
+
         return redirect('/admin/posts');
+    }
+
+
+    public function post($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('post', compact('post'));
     }
 }
