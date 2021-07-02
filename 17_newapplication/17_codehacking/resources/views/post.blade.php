@@ -86,8 +86,6 @@
                                     </div>
                                 </div>
                                 <!-- End Nested Comment -->
-                            @else
-                                <h1>No Replies</h1>
                             @endif
 
                         @endforeach
