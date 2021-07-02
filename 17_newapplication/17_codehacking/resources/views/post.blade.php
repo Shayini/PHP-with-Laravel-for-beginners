@@ -79,29 +79,41 @@
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{$reply->author}}
-                                        <small>{{$reply->created_at->diffForHumans()}}/small>
+                                        <small>{{$reply->created_at->diffForHumans()}}</small>
                                     </h4>
                                     <p>{{$reply->body}}</p>
                                 </div>
-
-
-                                {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\CommentRepliesController@createReply']) !!}
-                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
-
-                                    <div class="form-group">
-                                        {!!  Form::label('body', 'Body:')!!}
-                                        {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>1]) !!}
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Form::submit('Submit Reply', ['class'=>'btn btn-primary']) !!}
-                                    </div>
-                                {!! Form::close() !!}
                             </div>
                             <!-- End Nested Comment -->
                         @endforeach
                     @endif
+                    <div class="comment-reply-container">
+                        <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                        <div class="comment-reply col-sm-7">
+                            {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\CommentRepliesController@createReply']) !!}
+                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+                                <div class="form-group">
+                                    {!!  Form::label('body', 'Body:')!!}
+                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>1]) !!}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::submit('Submit Reply', ['class'=>'btn btn-primary']) !!}
+                                </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         @endforeach
     @endif
+@stop
+
+
+@section('scripts')
+    <script type="text/javascript">
+        $(".comment-reply-container .toggle-reply").click(function(){
+            $(this).next().slideToggle('slow');
+        });
+    </script>
 @stop
