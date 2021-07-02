@@ -38,4 +38,10 @@
             @endif
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{ $posts->links("pagination::bootstrap-4") }}
+        </div>
+    </div>
 @stop
