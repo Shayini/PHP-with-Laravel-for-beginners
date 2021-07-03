@@ -171,9 +171,9 @@
                                 <a href="{{route('categories.index')}}">All Categories</a>
                             </li>
 
-                            <li>
+                            <!-- <li>
                                 <a href="{{route('categories.create')}}">Create Category</a>
-                            </li>
+                            </li> -->
 
                         </ul>
                         <!-- /.nav-second-level -->
