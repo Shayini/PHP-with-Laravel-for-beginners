@@ -43,3 +43,10 @@ Route::group(['middleware'=>'admin'], function(){
 Route::group(['middleware'=>'auth'], function(){
     Route::post('comment/reply', [App\Http\Controllers\CommentRepliesController::class, 'createReply']);
 });
+
+
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+\UniSharp\LaravelFilemanager\Lfm::routes();
+});
