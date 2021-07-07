@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/post/{id}', [App\Http\Controllers\AdminPostsController::class, 'post'])->name('home.post');
+Route::get('/post/{id}', [App\Http\Controllers\HomeController::class, 'post'])->name('home.post');
 
 
 
