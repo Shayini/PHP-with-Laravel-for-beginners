@@ -9,7 +9,7 @@
 
             <!-- Author -->
             <p class="lead">
-                by <a href="#">{{$post->user->name}}</a>
+                by {{$post->user->name}}
             </p>
 
             <hr>
@@ -30,9 +30,7 @@
             <hr>
 
 
-            @if(Session::has('comment_message'))
-                {{session('comment_message')}}
-            @endif
+
 
             <!-- Blog Comments -->
             @if(Auth::check())
