@@ -6,32 +6,56 @@
     <h1>Media</h1>
 
     @if($photos)
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Created</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($photos as $photo)
+        <form class="" action="{{route('delete.media')}}" method="post" class="form-inline">
+            @csrf
+            {{method_field('delete')}}
+            <div class="form-group">
+                <select name="checkBoxArray" class="form-control">
+                    <option value="">Delete</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="delete_all" class="btn btn-primary">
+            </div>
+
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{$photo->id}}</td>
-                        <td><img height="50" src="{{$photo->file}}" alt=""></td>
-                        <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'No Date'}}</td>
-                        <td>
-                            {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\AdminMediasController@destroy', $photo->id]]) !!}
-
-                                <div class="form-group">
-                                    {!! Form::submit('DELETE', ['class'=>'btn btn-danger']) !!}
-                                </div>
-
-                            {!! Form::close() !!}
-                        </td>
+                        <th><input type="checkbox" id="options"></th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Created</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($photos as $photo)
+                        <tr>
+                            <th><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></th>
+                            <td>{{$photo->id}}</td>
+                            <td><img height="50" src="{{$photo->file}}" alt=""></td>
+                            <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'No Date'}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </form>
     @endif
+@stop
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#options').click(function(){
+                if(this.checked){
+                    $('.checkBoxes').each(function(){
+                        this.checked = true;
+                    });
+                } else {
+                    $('.checkBoxes').each(function(){
+                        this.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
 @stop
