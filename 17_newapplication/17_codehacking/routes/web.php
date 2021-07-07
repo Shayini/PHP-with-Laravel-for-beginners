@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
@@ -26,9 +24,7 @@ Route::get('/post/{id}', [App\Http\Controllers\AdminPostsController::class, 'pos
 
 
 Route::group(['middleware'=>'admin'], function(){
-    Route::get('/admin', function(){
-        return view('admin.index');
-    });
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
     Route::resource('admin/users', App\Http\Controllers\AdminUsersController::class);
     Route::resource('admin/posts', App\Http\Controllers\AdminPostsController::class);
     Route::resource('admin/categories', App\Http\Controllers\AdminCategoriesController::class);
