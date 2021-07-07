@@ -5,9 +5,6 @@
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-
-
-
             <!-- First Blog Post -->
             @if($posts)
                 @foreach($posts as $post)
@@ -29,7 +26,11 @@
             @endif
 
             <!-- Pagination -->
-
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-5">
+                    {{ $posts->links("pagination::bootstrap-4") }}
+                </div>
+            </div>
         </div>
 
         <!-- Blog Sidebar -->
